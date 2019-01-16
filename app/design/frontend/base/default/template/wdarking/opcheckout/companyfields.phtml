@@ -1,0 +1,21 @@
+<h1>test</h1>
+<li class="fields">
+    <div class="field">
+        <label for="billing:wdk_company_name" class="required"><em>*</em><?php echo $this->__('Wdk Company Name') ?></label>
+        <div class="input-box">
+            <input type="text" name="billing[wdk_company_name]" value="<?php echo $this->htmlEscape($this->getAddress()->getWdkCompanyName()) ?>" title="<?php echo $this->__('Wdk Company Name') ?>" id="billing:wdk_company_name" class="input-text required-entry" />
+        </div>
+    </div>
+    <div class="field">
+        <label for="billing:wdk_company_taxvat" class="required"><em>*</em><?php echo $this->__('Wdk Company Taxvat') ?></label>
+        <div class="input-box">
+            <input type="text" name="billing[wdk_company_taxvat]" value="<?php echo $this->htmlEscape($this->getAddress()->getWdkCompanyTaxvat()) ?>" title="<?php echo $this->__('Wdk Company Taxvat') ?>" id="billing:wdk_company_taxvat" class="input-text required-entry" />
+        </div>
+    </div>
+    <div class="field">
+        <label for="billing:wdk_company_ie" class="required"><em>*</em><?php echo $this->__('Wdk Company IE') ?></label>
+        <div class="input-box">
+            <input type="text" name="billing[wdk_company_ie]" value="<?php echo $this->htmlEscape($this->getAddress()->getWdkCompanyIe()) ?>" title="<?php echo $this->__('Wdk Company IE') ?>" id="billing:wdk_company_ie" class="input-text required-entry" />
+        </div>
+    </div>
+</li>
