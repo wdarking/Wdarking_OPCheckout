@@ -76,6 +76,17 @@
           <to_customer_address>*</to_customer_address>
         </wdk_company_ie>
       </sales_convert_quote_address>
+      <customer_address>
+        <wdk_company_name>
+            <to_quote_address>*</to_quote_address>
+        </wdk_company_name>
+        <wdk_company_taxvat>
+            <to_quote_address>*</to_quote_address>
+        </wdk_company_taxvat>
+        <wdk_company_ie>
+            <to_quote_address>*</to_quote_address>
+        </wdk_company_ie>
+      </customer_address>
     </fieldsets>
   </global>
   <frontend>
