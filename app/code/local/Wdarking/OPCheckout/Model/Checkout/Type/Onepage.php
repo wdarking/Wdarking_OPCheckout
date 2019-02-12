@@ -37,13 +37,15 @@ class Wdarking_OPCheckout_Model_Checkout_Type_Onepage extends Mage_Checkout_Mode
     {
         Mage::log('Wdarking_OPCheckout_Model_Checkout_Type_Onepage');
 
-        $cpf = new Wdarking_Helpers_ValidaCPFCNPJ($data['taxvat']);
+        if (isset($data['taxvat'])) {
+            $cpf = new Wdarking_Helpers_ValidaCPFCNPJ($data['taxvat']);
 
-        if (!$cpf->valida()) {
-            return array('error' => -1, 'message' => Mage::helper('checkout')->__('Invalid Taxvat'));
+            if (!$cpf->valida()) {
+                return array('error' => -1, 'message' => Mage::helper('checkout')->__('Invalid Taxvat'));
+            }
         }
 
-        if (isset($data['wdk_company_taxvat'])) {
+        if (isset($data['wdk_use_company']) && $data['wdk_use_company'] === '1' && isset($data['wdk_company_taxvat'])) {
             if (!isset($data['wdk_company_name'])) {
                 return array('error' => -1, 'message' => Mage::helper('checkout')->__('Invalid Wdk Company Name'));
             }
