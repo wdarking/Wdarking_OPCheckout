@@ -1,21 +1,57 @@
-<h1>test</h1>
-<li class="fields">
-    <div class="field">
+<li class="control">
+    <input type="checkbox" name="billing[wdk_use_company]" value="1" title="<?php echo $this->__('Use Company') ?>" id="billing:wdk_use_company" class="checkbox" /><label for="billing:wdk_use_company"><?php echo $this->__('Use Company') ?></label>
+</li>
+<div id="wdk_company_area" style="display: none;">
+    <h2><u>Informações de Empresa</u></h2>
+    <li class="wide">
         <label for="billing:wdk_company_name" class="required"><em>*</em><?php echo $this->__('Wdk Company Name') ?></label>
         <div class="input-box">
             <input type="text" name="billing[wdk_company_name]" value="<?php echo $this->htmlEscape($this->getAddress()->getWdkCompanyName()) ?>" title="<?php echo $this->__('Wdk Company Name') ?>" id="billing:wdk_company_name" class="input-text required-entry" />
         </div>
-    </div>
-    <div class="field">
+    </li>
+    <li class="wide">
         <label for="billing:wdk_company_taxvat" class="required"><em>*</em><?php echo $this->__('Wdk Company Taxvat') ?></label>
         <div class="input-box">
             <input type="text" name="billing[wdk_company_taxvat]" value="<?php echo $this->htmlEscape($this->getAddress()->getWdkCompanyTaxvat()) ?>" title="<?php echo $this->__('Wdk Company Taxvat') ?>" id="billing:wdk_company_taxvat" class="input-text required-entry" />
         </div>
-    </div>
-    <div class="field">
-        <label for="billing:wdk_company_ie" class="required"><em>*</em><?php echo $this->__('Wdk Company IE') ?></label>
-        <div class="input-box">
-            <input type="text" name="billing[wdk_company_ie]" value="<?php echo $this->htmlEscape($this->getAddress()->getWdkCompanyIe()) ?>" title="<?php echo $this->__('Wdk Company IE') ?>" id="billing:wdk_company_ie" class="input-text required-entry" />
+    </li>
+    <li class="fields">
+        <div class="field">
+            <label for="billing:wdk_company_ie" class="required"><em>*</em><?php echo $this->__('Wdk Company IE') ?></label>
+            <div class="input-box">
+                <input type="text" id="billing:wdk_company_ie" name="billing[wdk_company_ie]" value="<?php echo $this->htmlEscape($this->getAddress()->getWdkCompanyIe()) ?>" title="<?php echo $this->__('Wdk Company IE') ?>" class="input-text required-entry" />
+            </div>
         </div>
-    </div>
-</li>
+        <div class="field">
+            <div class="input-box">
+                <input type="checkbox" name="" value="0" title="<?php echo $this->__('Not Applicable') ?>" id="wdk_ie_selector" class="checkbox" /><label for="wdk_ie_selector"><?php echo $this->__('Not Applicable') ?></label>
+            </div>
+        </div>
+    </li>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        var wdkUseCompanySelector = document.getElementById("billing:wdk_use_company");
+        var wdkCompanyFields = document.getElementById("wdk_company_area");
+
+        var wdkIESelector = document.getElementById("wdk_ie_selector");
+        var wdkIEField = document.getElementById("billing:wdk_company_ie");
+
+        wdkUseCompanySelector.addEventListener('change', function(event) {
+            wdkUseCompanySelector.value = '0';
+            wdkCompanyFields.style.display = 'none';
+            if (wdkUseCompanySelector.checked) {
+                wdkUseCompanySelector.value = '1';
+                wdkCompanyFields.style.display = 'block';
+            }
+        });
+
+        wdkIESelector.addEventListener('change', function(event) {
+            wdkIEField.value = '';
+            if (wdkIESelector.checked) {
+                wdkIEField.value = 'ISENTO';
+            }
+        });
+    })();
+</script>
