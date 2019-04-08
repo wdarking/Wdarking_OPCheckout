@@ -56,7 +56,7 @@ class Wdarking_OPCheckout_Model_Checkout_Type_Onepage extends Mage_Checkout_Mode
             }
         }
 
-        parent::saveBilling($data, $customerAddressId);
+        return parent::saveBilling($data, $customerAddressId);
     }
 }
 
